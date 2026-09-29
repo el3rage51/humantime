@@ -34,3 +34,9 @@ def format_duration(seconds: int) -> str:
         if count:
             parts.append(f"{count}{unit}")
     return "".join(parts)
+
+
+def add_durations(*texts: str) -> str:
+    if not texts:
+        raise ValueError("至少一段时长")
+    return format_duration(sum(parse_duration(text) for text in texts))
