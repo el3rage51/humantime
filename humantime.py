@@ -36,6 +36,10 @@ def format_duration(seconds: int) -> str:
     return "".join(parts)
 
 
+def shorter_than(left: str, right: str) -> bool:
+    return parse_duration(left) < parse_duration(right)
+
+
 def add_durations(*texts: str) -> str:
     if not texts:
         raise ValueError("至少一段时长")
