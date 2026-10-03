@@ -40,6 +40,12 @@ def shorter_than(left: str, right: str) -> bool:
     return parse_duration(left) < parse_duration(right)
 
 
+def longest(*texts: str) -> str:
+    if not texts:
+        raise ValueError("至少一段时长")
+    return format_duration(max(parse_duration(text) for text in texts))
+
+
 def add_durations(*texts: str) -> str:
     if not texts:
         raise ValueError("至少一段时长")
