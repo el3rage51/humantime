@@ -1,6 +1,6 @@
 import unittest
 
-from humantime import add_durations, format_duration, longest, parse_duration, same_duration, shorter_than
+from humantime import add_durations, format_duration, longest, parse_duration, same_duration, shorter_than, shortest
 
 
 class HumantimeTest(unittest.TestCase):
@@ -21,6 +21,7 @@ class HumantimeTest(unittest.TestCase):
         self.assertFalse(shorter_than("1h", "1h"))
         self.assertTrue(same_duration("1h", "60m"))
         self.assertFalse(same_duration("1h", "61m"))
+        self.assertEqual(shortest("2h", "30m", "45s"), "45s")
 
     def test_add(self) -> None:
         self.assertEqual(add_durations("1h", "30m"), "1h30m")
