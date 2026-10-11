@@ -56,6 +56,10 @@ def shortest(*texts: str) -> str:
     return format_duration(min(parse_duration(text) for text in texts))
 
 
+def gap(left: str, right: str) -> str:
+    return format_duration(abs(parse_duration(left) - parse_duration(right)))
+
+
 def add_durations(*texts: str) -> str:
     if not texts:
         raise ValueError("至少一段时长")
