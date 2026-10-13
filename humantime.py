@@ -60,6 +60,10 @@ def gap(left: str, right: str) -> str:
     return format_duration(abs(parse_duration(left) - parse_duration(right)))
 
 
+def longer_than(left: str, right: str) -> bool:
+    return parse_duration(left) > parse_duration(right)
+
+
 def add_durations(*texts: str) -> str:
     if not texts:
         raise ValueError("至少一段时长")
