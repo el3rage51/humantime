@@ -64,6 +64,12 @@ def longer_than(left: str, right: str) -> bool:
     return parse_duration(left) > parse_duration(right)
 
 
+def unit_count(text: str) -> int:
+    raw = (text or "").strip()
+    parse_duration(raw)
+    return len(_PART.findall(raw))
+
+
 def add_durations(*texts: str) -> str:
     if not texts:
         raise ValueError("至少一段时长")
