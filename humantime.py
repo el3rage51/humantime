@@ -70,6 +70,14 @@ def unit_count(text: str) -> int:
     return len(_PART.findall(raw))
 
 
+def has_unit(text: str, unit: str) -> bool:
+    raw = (text or "").strip()
+    parse_duration(raw)
+    if unit not in "dhms" or len(unit) != 1:
+        raise ValueError("单位只能是 d h m s")
+    return any(found == unit for _, found in _PART.findall(raw))
+
+
 def add_durations(*texts: str) -> str:
     if not texts:
         raise ValueError("至少一段时长")
