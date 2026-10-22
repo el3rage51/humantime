@@ -78,6 +78,12 @@ def has_unit(text: str, unit: str) -> bool:
     return any(found == unit for _, found in _PART.findall(raw))
 
 
+def under(text: str, seconds: int) -> bool:
+    if seconds < 0:
+        raise ValueError("上限不能为负")
+    return parse_duration(text) < seconds
+
+
 def add_durations(*texts: str) -> str:
     if not texts:
         raise ValueError("至少一段时长")
