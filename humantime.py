@@ -84,6 +84,12 @@ def under(text: str, seconds: int) -> bool:
     return parse_duration(text) < seconds
 
 
+def over(text: str, seconds: int) -> bool:
+    if seconds < 0:
+        raise ValueError("下限不能为负")
+    return parse_duration(text) > seconds
+
+
 def add_durations(*texts: str) -> str:
     if not texts:
         raise ValueError("至少一段时长")
