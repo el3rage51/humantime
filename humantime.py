@@ -94,3 +94,8 @@ def add_durations(*texts: str) -> str:
     if not texts:
         raise ValueError("至少一段时长")
     return format_duration(sum(parse_duration(text) for text in texts))
+
+def at_least(text: str, seconds: int) -> bool:
+    if seconds < 0:
+        raise ValueError("下限不能为负")
+    return parse_duration(text) >= seconds
