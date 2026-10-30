@@ -99,3 +99,9 @@ def at_least(text: str, seconds: int) -> bool:
     if seconds < 0:
         raise ValueError("下限不能为负")
     return parse_duration(text) >= seconds
+
+def within_span(text: str, low: int, high: int) -> bool:
+    if low < 0 or high < low:
+        raise ValueError("区间不合法")
+    got = parse_duration(text)
+    return low <= got <= high
