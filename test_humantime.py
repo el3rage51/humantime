@@ -1,6 +1,6 @@
 import unittest
 
-from humantime import add_durations, format_duration, gap, has_unit, longer_than, longest, over, parse_duration, same_duration, shorter_than, shortest, under, unit_count, at_least
+from humantime import add_durations, format_duration, gap, has_unit, longer_than, longest, over, parse_duration, same_duration, shorter_than, shortest, under, unit_count, at_least, within_span
 
 
 class HumantimeTest(unittest.TestCase):
@@ -43,6 +43,9 @@ class HumantimeTest(unittest.TestCase):
 
         self.assertTrue(at_least("1h", 3600))
         self.assertFalse(at_least("30m", 3600))
+
+        self.assertTrue(within_span("30m", 60, 3600))
+        self.assertFalse(within_span("2h", 60, 3600))
 
 if __name__ == "__main__":
     unittest.main()
